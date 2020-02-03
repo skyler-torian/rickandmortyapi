@@ -51,8 +51,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     
         function deleteCharacter(e) {
-            let id = e.currentTarget.id.split("-")[1]
-            fetch(`http://localhost:3000/characters/${id}`, {
+            let id = e.currentTarget.id
+            debugger
+            
+            fetch(`http://localhost:3000/characters/${id}`,
+          {
                 method: 'DELETE'
             })
             e.currentTarget.remove()
@@ -70,6 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
         characterSpecies = character.species
         let characterStatus = document.createElement('div')
         characterStatus = character.status
+        characterCard.id = character.id
         container.appendChild(characterCard)
         characterCard.append(characterName, characterImg, characterSpecies, characterStatus)
         characterCard.addEventListener('click', deleteCharacter)
